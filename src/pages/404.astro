@@ -1,0 +1,28 @@
+---
+import RootLayout from "../layouts/RootLayout.astro";
+const _ERROR_MESSAGE = "We not found this page... i'm so sorry...";
+---
+
+<RootLayout>
+  <div id="not-found-page-wrapper">
+    <h1>{_ERROR_MESSAGE}</h1>
+  </div>
+</RootLayout>
+
+<style>
+  #not-found-page-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+    width: 100%;
+
+    background-color: blue;
+  }
+
+  h1 {
+    margin: auto;
+    font-size: 4rem;
+  };
+</style>
