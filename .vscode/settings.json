@@ -1,8 +1,13 @@
 {
   "discord.enabled": false,
-  "cSpell.words": [
-    "astro",
-    "astrojs",
-    "Oliveira"
-  ]
+  "cSpell.files": [
+    "src/**"
+  ],
+  "cSpell.includeRegExpList": [
+    ".d.ts"
+  ],
+  "files.exclude": {
+    "package-lock*": true,
+    "node_modules": true
+  }
 }
