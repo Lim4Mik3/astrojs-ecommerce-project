@@ -4,12 +4,18 @@
   "description": "Project pilot to study and know how to create projects with astrojs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "engines": {
-    "node": "^16.12.0"
+    "node": "18.14.2"
   },
   "keywords": [],
   "author": "Leonardo Oliveira <c.p.leonardooliveira@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "astro": "^2.4.2"
+  }
 }
