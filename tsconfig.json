@@ -1,4 +1,3 @@
-// spell-checker:disable
 {
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
