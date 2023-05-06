@@ -1,0 +1,15 @@
+{
+  "name": "astrojs-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "^16.12.0"
+  },
+  "keywords": [],
+  "author": "Leonardo Oliveira <c.p.leonardooliveira@gmail.com>",
+  "license": "ISC"
+}
