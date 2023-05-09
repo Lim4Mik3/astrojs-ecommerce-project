@@ -1,7 +1,13 @@
-<style is:global>
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "Roboto", system-ui, sans-serif;
+  }
 
   :root {
-    --gray: #F2F2F2;
   }
 
   * {
@@ -15,8 +21,4 @@
     height: 100vh;
     width: 100%;
   }
-
-  body {
-    background-color: var(--gray);
-  }
-</style>
+}
