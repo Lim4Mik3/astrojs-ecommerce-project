@@ -1,3 +1,4 @@
+import FlowerShopLogo from "@components/FlowerShopLogo";
 import { memo } from "react";
 import { FaUserAlt, FaShoppingCart } from "react-icons/fa";
 
@@ -28,10 +29,7 @@ const MENU: MenuItem[] = [
 function Header() {
   return (
     <header className="flex items-center justify-between h-24 bg-white overflow-hidden px-20 py-1">
-      <div className="flex font-medium text-3xl">
-        <p className="text-orange-500">Flower</p>
-        <p className="ml-1">Shop</p>
-      </div>
+      <FlowerShopLogo />
 
       <nav className="flex items-center justify-between">
         <ul className="flex list-none font-thin text-xl">
