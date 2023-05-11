@@ -3,13 +3,16 @@ import { Header, Footer } from "@components/react-components";
 import { HomeSection } from "@components/astro-components";
 
 import RootLayout from "@layouts/RootLayout.astro";
+import BestSellerSection from "@components/astro-components/BestSellerSection.astro";
 ---
 
 <RootLayout title="Home">
   <Header />
 
-  <main class="px-32 h-full bg-zinc-200" >
+  <main class="px-32 max-w-[1440px] mx-auto" >
     <HomeSection />
+
+    <BestSellerSection />
   </main>
 
   <Footer />
