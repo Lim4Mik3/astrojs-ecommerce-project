@@ -3,7 +3,7 @@ import { FaRegEye } from "@react-icons/all-files/fa/FaRegEye";
 
 export default function PostCard() {
   return (
-    <article className="bg-white rounded-lg hover:cursor-pointer hover:scale-105 drop-shadow-2xl transition ease-in-out duration-200">
+    <div className="bg-white rounded-lg hover:cursor-pointer hover:scale-105 drop-shadow-2xl transition ease-in-out duration-200 max-w-[380px]">
       <header className="flex items-center justify-between p-3">
         <div className="flex items-center">
           <img
@@ -44,6 +44,6 @@ export default function PostCard() {
 
         <span className="text-zinc-900 text-sm">Read more</span>
       </footer>
-    </article>
+    </div>
   );
 }
