@@ -7,6 +7,6 @@ if [[ "$VERCEL_ENV" == "production" ]] ; then
 
 else
   # Don't build
-  echo "🛑 - Build cancelled"
+  echo "🛑 - BUILD CANCELLED - This build will not be proceed because only productions and staging are supported"
   exit 0;
 fi
