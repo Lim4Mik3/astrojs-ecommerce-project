@@ -1,9 +1,9 @@
 ---
 import { Header, Footer } from "@components/react-components";
-import { HomeSection } from "@components/astro-components";
+import { HomeSection, BestSelersSection } from "@components/astro-components";
 
 import RootLayout from "@layouts/RootLayout.astro";
-import BestSellerSection from "@components/astro-components/BestSellerSection.astro";
+import LatestPostsSection from "@components/astro-components/LatestPostsSection.astro";
 ---
 
 <RootLayout title="Home">
@@ -12,7 +12,9 @@ import BestSellerSection from "@components/astro-components/BestSellerSection.as
   <main class="px-32 max-w-[1440px] mx-auto" >
     <HomeSection />
 
-    <BestSellerSection />
+    <BestSelersSection />
+
+    <LatestPostsSection />
   </main>
 
   <Footer />

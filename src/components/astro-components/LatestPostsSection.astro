@@ -1,0 +1,14 @@
+---
+  import PostCard from '@components/react-components/PostCard';
+import SectionTitleComponent from './SectionTitleComponent.astro';
+---
+
+<section class="w-full flex flex-col pb-24">
+  <SectionTitleComponent title="Latest Posts" />
+
+  <div class="grid grid-cols-3 mt-5 gap-8">
+    <PostCard />
+    <PostCard />
+    <PostCard />
+  </div>
+</section>
