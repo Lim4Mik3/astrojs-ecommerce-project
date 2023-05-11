@@ -2,11 +2,11 @@ import { memo } from "react";
 import { FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import { MdAlternateEmail } from "react-icons/md";
 
-import FlowerShopLogo from "@components/FlowerShopLogo";
+import FlowerShopLogo from "@components/react-components/FlowerShopLogo";
 
 function Footer() {
   return (
-    <footer className="px-20 py-10 bg-zinc-700 grid grid-cols-3 gap-8">
+    <footer className="px-32 py-10 bg-zinc-700 grid grid-cols-3 gap-8">
       <div>
         <FlowerShopLogo />
         <p className="mt-3 font-thin text-zinc-300 text-justify">

@@ -1,11 +1,16 @@
 ---
-import Footer from "@components/Footer";
-import Header from "@components/Header";
+import { Header, Footer } from "@components/react-components";
+import { HomeSection } from "@components/astro-components";
+
 import RootLayout from "@layouts/RootLayout.astro";
 ---
 
 <RootLayout title="Home">
   <Header />
+
+  <main class="px-32 h-full bg-zinc-200" >
+    <HomeSection />
+  </main>
 
   <Footer />
 </RootLayout>
