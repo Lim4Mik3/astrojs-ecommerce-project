@@ -1,7 +1,7 @@
 import FlowerShopLogo from "@components/react-components/FlowerShopLogo";
 import { memo } from "react";
-import { FaUserAlt, FaShoppingCart } from "react-icons/fa";
-
+import { FaUserAlt } from "@react-icons/all-files/fa/FaUserAlt";
+import { FaShoppingCart } from "@react-icons/all-files/fa/FaShoppingCart";
 interface MenuItem {
   title: string;
   path: string;

@@ -1,6 +1,7 @@
 import { memo } from "react";
-import { FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
-import { MdAlternateEmail } from "react-icons/md";
+import { FaMapMarkerAlt } from "@react-icons/all-files/fa/FaMapMarkerAlt";
+import { FaPhoneAlt } from "@react-icons/all-files/fa/FaPhoneAlt";
+import { MdEmail } from "@react-icons/all-files/md/MdEmail";
 
 import FlowerShopLogo from "@components/react-components/FlowerShopLogo";
 
@@ -58,8 +59,7 @@ function Footer() {
           Lake Forest, CA
         </p>
         <p className="flex items-center mb-7">
-          <MdAlternateEmail className="mr-2 text-zinc-500" />{" "}
-          support@Flowers.com
+          <MdEmail className="mr-2 text-zinc-500" /> support@Flowers.com
         </p>
         <p className="flex items-center">
           <FaPhoneAlt className="mr-2 text-zinc-500" /> +1 236 5489
