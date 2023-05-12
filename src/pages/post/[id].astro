@@ -1,11 +1,14 @@
 ---
 import { FlowerBlogLogo } from "@components/react-components";
 import RootLayout from "@layouts/RootLayout.astro";
+import { getUniquePost } from "@src/data/services/PostService";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 
-const { slug } = Astro.params;
+const { id } = Astro.params;
+const post = await getUniquePost(id);
 ---
 
-<RootLayout title={slug}>
+<RootLayout title={post.title}>
   <header class="bg-white w-full border-b border-zinc-300">
     <div class="max-w-[1440px] w-full mx-auto flex items-center justify-between h-24  overflow-hidden px-32 py-1 ">
       <FlowerBlogLogo />
@@ -20,10 +23,11 @@ const { slug } = Astro.params;
       </nav>
     </div>
   </header>
-
-  <article class="contentContainer bg-white max-w-[1200px] p-4 w-full mx-auto shadow-lg">
-    <h1>the content will be here</h1>
-  </article>
+  
+  <article 
+    class="contentContainer bg-white max-w-[1200px] p-4 w-full mx-auto shadow-lg"
+    set:html={documentToHtmlString(post.post)}
+  ></article>
 </RootLayout>
 
 <style>

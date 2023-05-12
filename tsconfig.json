@@ -16,7 +16,7 @@
         "src/pages/*"
       ],
       "@src/*": [
-        "src/src/*"
+        "src/*"
       ],
     }
   },
