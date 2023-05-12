@@ -1,14 +1,18 @@
 ---
-  import PostCard from '@components/react-components/PostCard';
+import PostCard from '@components/react-components/PostCard';
 import SectionTitleComponent from './SectionTitleComponent.astro';
+import { getPosts } from '@src/data/services/PostService';
+
+const latestPosts = await getPosts();
+const isEmpty = latestPosts.length === 0;
 ---
 
 <section class="w-full flex flex-col pb-24">
   <SectionTitleComponent title="Latest Posts" />
 
   <div class="grid grid-cols-3 mt-5 gap-8">
-    <PostCard />
-    <PostCard />
-    <PostCard />
+    {
+      latestPosts.map(post => <PostCard _post={post} />)
+    }
   </div>
 </section>
