@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function PostCard({ _post }: Props) {
-  const { author, id, created_at, post, title, banner } = _post;
+  const { author, id, created_at, post, title, banner, author_photo } = _post;
 
   return (
     <a
@@ -19,7 +19,7 @@ export default function PostCard({ _post }: Props) {
       <header className="flex items-center justify-between p-3">
         <div className="flex items-center">
           <img
-            src={getRandomPhoto("face")}
+            src={author_photo}
             alt="Random photo author fic"
             className="max-w-[40px] max-h-[40px] rounded-full"
           />
