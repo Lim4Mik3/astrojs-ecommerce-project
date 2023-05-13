@@ -3,7 +3,7 @@ import { PostModel } from "../models/PostModel";
 import type { Document } from "@contentful/rich-text-types";
 
 export default {
-  toDomain({ fields, sys }: PostItem): PostModel {
+  toDomain({ fields, sys }: PostItem): Omit<PostModel, "author_photo"> {
     return {
       id: sys.id,
       author: fields.author,

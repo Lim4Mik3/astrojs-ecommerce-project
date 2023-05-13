@@ -4,7 +4,6 @@ import SectionTitleComponent from './SectionTitleComponent.astro';
 import { getPosts } from '@src/data/services/PostService';
 
 const latestPosts = await getPosts();
-const isEmpty = latestPosts.length === 0;
 ---
 
 <section class="w-full flex flex-col pb-24">
