@@ -1,0 +1,17 @@
+---
+import { Header, ProductCard } from "@components/react-components";
+import RootLayout from "@layouts/RootLayout.astro";
+import { getProducts } from "@src/data/services/ProductService";
+
+const products = await getProducts();
+---
+
+<RootLayout title="FLOWER SHOP">
+  <Header client:only />
+
+  <div class="max-w-[1200px] w-full mx-auto mt-6 grid grid-cols-4 grid-rows-2 gap-4 self-center justify-self-center" style="height: calc(100% - 140px)" >
+    {
+      products.map(product => <ProductCard product={product} />)
+    }
+  </div>
+</RootLayout>

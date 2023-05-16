@@ -27,6 +27,8 @@ const MENU: MenuItem[] = [
 ];
 
 function Header() {
+  const isNotOnHomePage = window.location.href.endsWith("/shop");
+
   return (
     <header className="w-full bg-white">
       <div className="max-w-[1440px] w-full mx-auto flex items-center justify-between h-24  overflow-hidden px-32 py-1">
@@ -37,6 +39,8 @@ function Header() {
             {MENU.map((menu, index) => {
               const isFirstItem = index === 0;
               const { title, path } = menu;
+
+              if (isNotOnHomePage && path === "/shop") return null;
 
               if (isFirstItem) {
                 return (

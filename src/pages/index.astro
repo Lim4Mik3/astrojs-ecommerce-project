@@ -7,7 +7,7 @@ import LatestPostsSection from "@components/astro-components/LatestPostsSection.
 ---
 
 <RootLayout title="Home">
-  <Header />
+  <Header client:only />
 
   <main class="px-32 max-w-[1440px] mx-auto" >
     <HomeSection />
