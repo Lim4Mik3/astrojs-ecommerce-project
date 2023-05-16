@@ -3,14 +3,13 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import { customRenderConfig } from "@src/lib/contentful/custom-render-nodes";
 import {
   BlogPostCtx,
+  MAX_POST_BANNER_HEIGHT,
+  MIN_POST_BANNER_HEIGHT,
   blogCtx,
   setBannerHeight,
 } from "@src/stores/BlogPostStore";
 import { useStore } from "@nanostores/react";
 import { useRef } from "react";
-
-export const MIN_POST_BANNER_HEIGHT = 180;
-export const MAX_POST_BANNER_HEIGHT = 380;
 
 interface Props {
   _ctx: BlogPostCtx;

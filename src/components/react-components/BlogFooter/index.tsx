@@ -1,9 +1,12 @@
 import { memo } from "react";
 import { formatDate } from "@src/shared/utils/formatDate";
-import { BlogPostCtx, blogCtx } from "@src/stores/BlogPostStore";
+import {
+  BlogPostCtx,
+  MIN_POST_BANNER_HEIGHT,
+  blogCtx,
+} from "@src/stores/BlogPostStore";
 import { useStore } from "@nanostores/react";
 import { motion } from "framer-motion";
-import { MIN_POST_BANNER_HEIGHT } from "../BlogContent";
 
 interface Props {
   _ctx: BlogPostCtx;
