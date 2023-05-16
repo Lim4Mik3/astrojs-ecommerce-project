@@ -1,64 +1,58 @@
 ---
-import { FlowerBlogLogo } from "@components/react-components";
 import RootLayout from "@layouts/RootLayout.astro";
 import { getUniquePost } from "@src/data/services/PostService";
-import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
-import { customRenderConfig } from "@src/lib/contentful/custom-render-nodes";
-import { formatDate } from "@src/shared/utils/formatDate";
+import axios from 'axios';
+import { getPredominantColors } from "@src/shared/utils/getPredominantColors";
+import BlogHeader from "@components/react-components/BlogHeader";
+import BlogFooter from "@components/react-components/BlogFooter";
+import { BlogBanner } from "@components/react-components/BlogBanner";
+import { BlogContent, MAX_POST_BANNER_HEIGHT } from "@components/react-components/BlogContent";
+import { BlogPostCtx } from "@src/stores/BlogPostStore";
+import { PostModel } from "@src/data/models/PostModel";
 
+// Retrive post ID
 const { id } = Astro.params;
-const post = await getUniquePost(id);
+let post: PostModel;
+
+// Get Post
+try {
+  post = await getUniquePost(id);
+} catch (error) {
+  Astro.redirect('/');
+}
+
+// Get post banner image get it in buffer format  
+const { data } = await axios({
+  method: 'GET',
+  url: post.banner,
+  responseType: 'arraybuffer'
+});
+
+const base64Image = Buffer.from(data, 'binary').toString('base64');
+
+// Get the colors palette from banner image
+const palette = await getPredominantColors(data);
+
+// Create a available blogCtx variable from server;
+const remoteBlogCtx: BlogPostCtx = {
+  banner_height: MAX_POST_BANNER_HEIGHT,
+  banner_image: `data:image/jpeg;base64,${base64Image}`,
+  palette: {
+    theme: palette.predominant_theme,
+    dark: palette.predominant_dark.rgb,
+    light: palette.predominant_light.rgb,
+    main: palette.vibrant_color.rgb,
+  },
+  post,
+}
 ---
 
 <RootLayout title={post.title}>
-  <header class="blog-post-header w-full border-b absolute z-10">
-    <div class="max-w-[1440px] w-full mx-auto flex items-center justify-between h-24  overflow-hidden px-32 py-1 ">
-      <FlowerBlogLogo />
-
-      <nav>
-        <ul class="flex items-center justify-between">
-          <li class="ml-4 first:ml-0 text-sm text-zinc-500 hover:text-orange-600 transition ease-in-out duration-200 hover:cursor-pointer">Todos posts</li>
-          <li class="ml-4 text-sm text-zinc-500 hover:text-orange-600 transition ease-in-out duration-200 hover:cursor-pointer">Sobre o blog</li>
-          <li class="ml-4 text-sm text-zinc-500 hover:text-orange-600 transition ease-in-out duration-200 hover:cursor-pointer">Shop</li>
-          <li class="ml-4 text-sm text-zinc-500 hover:text-orange-600 transition ease-in-out duration-200 hover:cursor-pointer">Voltar a Home</li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <BlogHeader client:only _ctx={remoteBlogCtx} />
   
-  <div class="bg-slate-50 w-full flex flex-col flex-grow h-full">
-    <!-- banner -->
-    <div class="max-h-96 w-full relative overflow-hidden shadow-2xl">
-      <img src={post.banner} alt={post.title} class="w-full h-full object-cover post-banner-photo">
+  <BlogBanner client:only _ctx={remoteBlogCtx}  />
+  
+  <BlogContent client:only _ctx={remoteBlogCtx} />
 
-      <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex px-5 max-w-[1300px] w-full">
-        <h1 class="text-white text-5xl z-10 drop-shadow-2xl shadow-slate-950 bg-clip-text">
-          {post.title}
-        </h1>
-      </div>
-    </div>
-
-    <article 
-      class="bg-white max-w-[1000px] pt-16 px-32 w-full mx-auto shadow-lg contentContainer overflow-auto mb-20 pb-8"
-      set:html={documentToHtmlString(post.post, customRenderConfig)}
-    ></article>  
-  </div>
-
-  <footer class="absolute bottom-0 w-full max-h-20 h-full blog-post-footer">
-    <div class="max-w-[1000px] w-full mx-auto h-full flex items-center justify-between">
-      <div>
-        <span class="mr-3 text-sm text-zinc-800">Publicado em: {formatDate(post.created_at)}</span>
-      </div>
-
-      <div class="flex items-center ml-auto h-full">
-        <span class="mr-3 text-sm text-zinc-800">Criado por: {post.author}</span>
-
-        <img
-          src={post.author_photo}
-          alt="Random photo author fic"
-          class="max-w-[40px] max-h-[40px] rounded-full"
-        />
-      </div>
-    </div>
-  </footer>
+  <BlogFooter client:only _ctx={remoteBlogCtx}  />
 </RootLayout>
