@@ -7,7 +7,7 @@ import { useStore } from "@nanostores/react";
 import { MIN_POST_BANNER_HEIGHT } from "../BlogContent";
 
 interface Props {
-  _ctx: BlogPostCtx;
+  _ctx?: Partial<BlogPostCtx>;
 }
 
 function BlogHeader({ _ctx }: Props) {
@@ -20,6 +20,7 @@ function BlogHeader({ _ctx }: Props) {
   const isBannerReachedMiddle = banner_height === MIN_POST_BANNER_HEIGHT;
 
   const menuItemsColor = theme === "light" ? dark : light;
+  const isNOTOnTheListPage = !window.location.href.endsWith("/blog");
 
   return (
     <motion.header
@@ -40,12 +41,14 @@ function BlogHeader({ _ctx }: Props) {
 
         <nav>
           <ul className="flex items-center justify-between">
-            <li
-              className="hover:underline uppercase ml-4 first:ml-0 text-sm text-zinc-500 hover:text-orange-600 transition ease-in-out duration-200 hover:cursor-pointer"
-              style={{ color: `rgb(${menuItemsColor})` }}
-            >
-              Todos posts
-            </li>
+            {isNOTOnTheListPage && (
+              <li
+                className="hover:underline uppercase ml-4 first:ml-0 text-sm text-zinc-500 hover:text-orange-600 transition ease-in-out duration-200 hover:cursor-pointer"
+                style={{ color: `rgb(${menuItemsColor})` }}
+              >
+                <a href="/blog">Todos posts</a>
+              </li>
+            )}
             <li
               className="hover:underline uppercase ml-4 text-sm text-zinc-500 hover:text-orange-600 transition ease-in-out duration-200 hover:cursor-pointer"
               style={{ color: `rgb(${menuItemsColor})` }}
@@ -56,7 +59,7 @@ function BlogHeader({ _ctx }: Props) {
               className="hover:underline uppercase ml-4 text-sm text-zinc-500 hover:text-orange-600 transition ease-in-out duration-200 hover:cursor-pointer"
               style={{ color: `rgb(${menuItemsColor})` }}
             >
-              Shop
+              <a href="/shop">Shop</a>
             </li>
             <li
               className="hover:underline uppercase ml-4 text-sm text-zinc-500 hover:text-orange-600 transition ease-in-out duration-200 hover:cursor-pointer"

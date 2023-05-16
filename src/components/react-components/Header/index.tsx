@@ -36,7 +36,7 @@ function Header() {
           <ul className="flex list-none font-thin text-xl">
             {MENU.map((menu, index) => {
               const isFirstItem = index === 0;
-              const { title } = menu;
+              const { title, path } = menu;
 
               if (isFirstItem) {
                 return (
@@ -46,7 +46,7 @@ function Header() {
                       "transition ease-in-out duration-200 hover:text-orange-500 hover:cursor-pointer"
                     }
                   >
-                    {title}
+                    <a href={path}>{title}</a>
                   </li>
                 );
               }
@@ -58,7 +58,7 @@ function Header() {
                     "ml-6 transition ease-in-out duration-200 hover:text-orange-500 hover:cursor-pointer"
                   }
                 >
-                  {title}
+                  <a href={path}>{title}</a>
                 </li>
               );
             })}

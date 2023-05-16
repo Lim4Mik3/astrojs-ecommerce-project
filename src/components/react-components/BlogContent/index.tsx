@@ -26,6 +26,8 @@ export function BlogContent({ _ctx: { post } }: Props) {
         "Something is wrong with the current ArticleElementREF of the article blog content"
       );
 
+    if (banner_height === MIN_POST_BANNER_HEIGHT) return;
+
     const articleRef = ArticleElementREF.current;
 
     const currentArticleScroll = articleRef.scrollTop;

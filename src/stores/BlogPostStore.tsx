@@ -2,7 +2,7 @@ import { MAX_POST_BANNER_HEIGHT } from "@components/react-components/BlogContent
 import { atom } from "nanostores";
 import type { PostModel } from "@src/data/models/PostModel";
 
-interface PostPageColorsPalette {
+export interface PostPageColorsPalette {
   theme: "light" | "dark";
   main: number[];
   dark: number[];
