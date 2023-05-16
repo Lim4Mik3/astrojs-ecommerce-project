@@ -1,0 +1,31 @@
+---
+import RootLayout from "@layouts/RootLayout.astro";
+import BlogHeader from '@components/react-components/BlogHeader'
+import { PostPageColorsPalette } from "@src/stores/BlogPostStore";
+import { getPosts } from "@src/data/services/PostService";
+import PostListCard from "@components/react-components/PostListCard";
+
+const localPallete: PostPageColorsPalette = {
+    main: [252, 186, 3],
+    theme: "light",
+    light: [255, 204, 36],
+    dark: [214, 147, 2],
+};
+
+const posts = await getPosts();
+---
+
+<RootLayout title="FLOWER BLOG | POSTS">
+  <BlogHeader client:only _ctx={{ palette: localPallete }}/>
+
+  <main class="h-full overflow-hidden pt-24 max-w-[1200px] w-full mx-auto bg-white">
+    <p class="text-4xl my-5 ml-5 text-orange-500">Ultimos posts</p>
+
+    <div class="h-full overflow-auto pb-4 px-5">
+      {
+        posts.map(post => <PostListCard post={post} />)
+      }
+    </div>
+  </main>
+
+</RootLayout>
