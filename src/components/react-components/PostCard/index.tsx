@@ -13,7 +13,7 @@ export default function PostCard({ _post }: Props) {
 
   return (
     <a
-      href={`/post/${id}`}
+      href={`/blog/post/${id}`}
       className="bg-white rounded-lg hover:cursor-pointer hover:scale-105 drop-shadow-2xl transition ease-in-out duration-200 max-w-[380px]"
     >
       <header className="flex items-center justify-between p-3">

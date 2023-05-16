@@ -1,0 +1,58 @@
+---
+import RootLayout from "@layouts/RootLayout.astro";
+import { getUniquePost } from "@src/data/services/PostService";
+import axios from 'axios';
+import { getPredominantColors } from "@src/shared/utils/getPredominantColors";
+import BlogHeader from "@components/react-components/BlogHeader";
+import BlogFooter from "@components/react-components/BlogFooter";
+import { BlogBanner } from "@components/react-components/BlogBanner";
+import { BlogContent, MAX_POST_BANNER_HEIGHT } from "@components/react-components/BlogContent";
+import { BlogPostCtx } from "@src/stores/BlogPostStore";
+import { PostModel } from "@src/data/models/PostModel";
+
+// Retrive post ID
+const { id } = Astro.params;
+let post: PostModel;
+
+// Get Post
+try {
+  post = await getUniquePost(id);
+} catch (error) {
+  Astro.redirect('/');
+}
+
+// Get post banner image get it in buffer format  
+const { data } = await axios({
+  method: 'GET',
+  url: post.banner,
+  responseType: 'arraybuffer'
+});
+
+const base64Image = Buffer.from(data, 'binary').toString('base64');
+
+// Get the colors palette from banner image
+const palette = await getPredominantColors(data);
+
+// Create a available blogCtx variable from server;
+const remoteBlogCtx: BlogPostCtx = {
+  banner_height: MAX_POST_BANNER_HEIGHT,
+  banner_image: `data:image/jpeg;base64,${base64Image}`,
+  palette: {
+    theme: palette.predominant_theme,
+    dark: palette.predominant_dark.rgb,
+    light: palette.predominant_light.rgb,
+    main: palette.vibrant_color.rgb,
+  },
+  post,
+}
+---
+
+<RootLayout title={post.title}>
+  <BlogHeader client:only _ctx={remoteBlogCtx} />
+  
+  <BlogBanner client:only _ctx={remoteBlogCtx}  />
+  
+  <BlogContent client:only _ctx={remoteBlogCtx} />
+
+  <BlogFooter client:only _ctx={remoteBlogCtx}  />
+</RootLayout>
