@@ -22,11 +22,18 @@
     "@astrojs/tailwind": "^3.1.2",
     "@astrojs/vercel": "^3.3.0",
     "@contentful/rich-text-html-renderer": "^16.0.4",
+    "@nanostores/react": "^0.6.0",
     "@react-icons/all-files": "^4.1.0",
     "astro": "^2.4.3",
+    "axios": "^1.4.0",
     "contentful": "^10.2.0",
+    "framer-motion": "^10.12.10",
+    "nanostores": "^0.8.1",
+    "node-vibrant": "^3.2.1-alpha.1",
+    "patch-package": "^7.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "sharp": "^0.32.1",
     "tailwindcss": "^3.3.2"
   },
   "devDependencies": {
