@@ -2,9 +2,12 @@ import { memo } from "react";
 
 import { motion } from "framer-motion";
 import FlowerBlogLogo from "../FlowerBlogLogo";
-import { BlogPostCtx, blogCtx } from "@src/stores/BlogPostStore";
+import {
+  BlogPostCtx,
+  MIN_POST_BANNER_HEIGHT,
+  blogCtx,
+} from "@src/stores/BlogPostStore";
 import { useStore } from "@nanostores/react";
-import { MIN_POST_BANNER_HEIGHT } from "../BlogContent";
 
 interface Props {
   _ctx?: Partial<BlogPostCtx>;
