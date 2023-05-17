@@ -1,5 +1,4 @@
-// @ts-ignore
-import * as Vibrant from "node-vibrant";
+import Vibrant from "node-vibrant";
 import sharp from "sharp";
 
 type PredominantThemeType = "dark" | "light";
